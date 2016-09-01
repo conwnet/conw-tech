@@ -28,9 +28,10 @@
 			<th width="100px">查看</th>
 			<th width="100px">删除</th>
 		</tr>
+			<?php $id = 1; ?>
 		<foreach name="report_list" item="v">
 			<tr>
-				<td>{$v['rid']}</td>
+				<td>{$page * 15 - 15 + $id++}</td>
 				<td>{$v['p_name']}</td>
 				<td>{$v['author']}</td>
 				<td>{:date('Y-m-d', $v['s_time'])}</td>

@@ -56,8 +56,74 @@ class ReportController extends AutoController {
 	*/
 	public function review() {
 		$tb_r = M('report_1');
-		$school = $_SESSION['school'];
-		$report_list = $tb_r->where("s_status='0' and company like '%s%%'", $_SESSION['school'])->order('s_time DESC')->select();
+        $item = I('item');
+        $val  = I('val');
+
+        if($item==1) $items = 'p_name';
+        else if($item==2) $items = 'company';
+        else if($item==3) $items = 'p_code_name';
+        else if($item==4) $items = 'owner';
+        else if($item==5) $items = 'area';
+        else if($item==6) $items = 'p_link';
+        else if($item==7) $items = 'view';
+        else { $items = "''"; $val = ''; }
+
+        $area = array(
+            '先进制造' => '1',
+            '新材料' => '2',
+            '电子与信息' => '3',
+            '生物与医药' => '4',
+            '新能源与高效节能技术' => '5',
+            '资源与环境' => '6',
+            '现代农业' => '7',
+            '民用航空' => '8',
+            '其他' => '9',
+        );
+
+        if($items == 'area')
+            $val = $area[trim($val)];
+
+        $p_link = array(
+            '高档数机床及自动化生产线' => '1',
+            '核电装备' => '2',
+            '特高压输变电设备' => '3',
+            '轨道交通装备' => '4',
+            '工程机械' => '5',
+            '工业机器人与专用机器人' => '6',
+            'IC装备' => '7',
+            '新一代信息技术' => '8',
+            '激光设备' => '9',
+            '海洋工程装备' => '10',
+            '风电装备' => '11',
+            '新能源汽车' => '12',
+            '航空装备' => '13',
+            '新能源汽车' => '14',
+            '生物医药' => '15',
+            '节能环保' => '16',
+            '海洋资源利用' => '17',
+            '农业种子' => '18',
+            '其他' => '19',
+        );
+
+        if($items == 'p_link')
+            $val = $p_link[trim($val)];
+
+        $view = array(
+            '发明专利' => '1',
+            '实用新型专利' => '2',
+            '集成电路设计权' => '3',
+            '软件著作权' => '4',
+            '其他' => '5',
+        );
+
+        if($items == 'view')
+            $val = $view[trim($val)];
+
+        $report_list = $tb_r->where("s_status='0' and company like '%s%%' AND $items LIKE '%%%s%%'", $_SESSION['school'],  $val)->order('s_time DESC')->select();
+
+
+
+        //$report_list = $tb_r->where("s_status='0' and company like '%s%%'", $_SESSION['school'])->order('s_time DESC')->select();
 		$this->assign('report_list', $report_list);
 		$this->display();
 	}

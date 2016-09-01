@@ -23,19 +23,31 @@
 		<tr>
 			<th width="300px">友链名称</th>
 			<th width="300px">链接地址</th>
-			<th width="200px">保存</th>
+			<th width="200px">操作</th>
 		</tr>
 		<foreach name="friend_list" item="v">
 			<tr>
 				<form action="{:U('Web/friend_update')}?fid={$v['fid']}" method="post">
 				<td><input type="text" name="name" value="{$v['name']}" /></td>
 				<td><input type="text" name="link" value="{$v['link']}" /></td>
-				<td><input type="submit" value="保存" /></td>
+				<td><input type="submit" value="保存" /></form>
+				<form style="display:inline-block" method="post">
+					<input type="hidden" name="delete" value="1">
+					<input type="hidden" name="fid" value="{$v['fid']}">
+					<input type="submit" value="删除" />
 				</form>
+				</td>
+
 			</tr>
 		</foreach>
 		</table>
 		<hr width="820px" /><br />
+		<center>
+			<form action="" method="post">
+				<input type="hidden" name="add" value="1">
+				<input type="submit" value="添加新友链" />
+			</form>
+		</center>
 	</div>
 </body>
 </html>

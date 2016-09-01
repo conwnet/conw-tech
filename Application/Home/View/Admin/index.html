@@ -40,8 +40,10 @@
             	<a class="a_list a_list2">用户管理</a>
                 <div class="menu_list">
                 	<a class="base_info" href="#">基本信息</a>
+                    <?php if($_SESSION['power'] != 0) { ?>
                     <a class="rev_user" href="#">账户审核</a>
                     <a class="mgr_user" href="#">成员管理</a>
+                    <?php } ?>
                 </div>
             </li>
             <?php } ?>

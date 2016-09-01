@@ -39,7 +39,14 @@ class WebController extends AutoController {
 		友情链接管理页面
 	*/
 	public function friend() {
-		$tb_n = M('friend');
+        $tb_n = M('friend');
+        if(I('add')) {
+            $tb_n->create(['name'=>'']);
+            $tb_n->add();
+        }
+        if(I('delete')) {
+            $tb_n->where('fid=%d', I('fid'))->delete();
+        }
 		$this->assign('friend_list', $tb_n->select());
 		$this->display();
 	}
@@ -49,9 +56,9 @@ class WebController extends AutoController {
 	*/
 	public function friend_update() {
 		$tb_n = M('friend');
-		$fid=$_GET['fid'];
+		$fid = $_GET['fid'];
 		$tb_n->create();
-		$tb_n->where("fid=%d", $fid)->save();
+        $tb_n->where("fid=%d", $fid)->save();
 		$this->success('更新成功！');
 	}
 }

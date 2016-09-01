@@ -20,6 +20,23 @@
 	<div style="margin: 20px;">
 		<table style="text-align: center; border: 3px;">
 		<caption><h2>科研成果报告审核</h2></caption>
+		<caption>
+			<form action='{:URL()}' method="get">
+				<select name="item">
+					<option value="0">请选择查询条件</option>
+					<option value="1">名称</option>
+					<option value="2">单位</option>
+					<option value="3">学科</option>
+					<option value="4">负责人</option>
+					<option value="5">所属技术领域</option>
+					<option value="6">服务产业链</option>
+					<option value="7"> 知识产权形式</option>
+				</select>&nbsp;
+				<input type="text" name="val" style="border:1px solid;"/>&nbsp;
+				<input type="hidden" name="page" value="{$page}" />
+				<input type="submit" value="查询" />
+			</form>
+		</caption>
 		<th width="300px">成果名称</th>
 		<th width="200px">提交者</th>
 		<th width="200px">提交时间</th>

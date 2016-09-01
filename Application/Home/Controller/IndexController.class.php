@@ -67,7 +67,7 @@ class IndexController extends Controller {
 
         if($page=='' || $page<1) $page = 1;
         if($page > $p_count) $page = $p_count;
-        if($val=='') $val = '';
+
         if($item==1) $items = 'p_name';
         else if($item==2) $items = 'company';
         else if($item==3) $items = 'p_code_name';
