@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+	table {
+		margin: 0px auto;
+	}
+	th {
+		border-bottom: 2px solid #424F63;
+	}
+	input {
+		border: 2px solid;
+	}
+	tr:hover {
+		background-color: #EEE;
+	}
+</style>
+</head>
+<body>
+	<div style="margin: 20px;">
+		<table style="text-align: center; border: 3px;">
+		<caption><h2>企业需求报告管理</h2></caption>
+		<tr>
+			<th width="100px">编号</th>
+			<th width="300px">名称</th>
+			<th width="200px">提交者</th>
+			<th width="200px">提交时间</th>
+			<th width="100px">查看</th>
+			<th width="100px">删除</th>
+		</tr>
+		<foreach name="demand_list" item="v">
+			<tr>
+				<td>{$v['did']}</td>
+				<td>{$v['name']}</td>
+				<td>{$v['s_user']}</td>
+				<td>{:date('Y-m-d', $v['s_time'])}</td>
+				<td><a href="{:U('Demand/insert')}?did={$v['did']}">查看</a></td>
+				<td><a href="{:U('Demand/delete')}?did={$v['did']}">删除</a></td>
+			</tr>
+		</foreach>
+		</table>
+		<hr width="1020px" /><br />
+		<center>
+			<form>
+			<a href="{:U('Demand/update')}?page={$page-1}">上一页</a>&nbsp;&nbsp;
+			<a href="{:U('Demand/update')}?page={$page+1}">下一页</a>&nbsp;&nbsp;
+			第<input type="text" value="{$page}" name="page" style="width:2em;" />页&nbsp;
+			<input type="submit" value="GO" />
+			</form>
+		</center>
+	</div>
+</body>
+</html>

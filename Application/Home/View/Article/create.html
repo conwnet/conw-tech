@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>文章管理</title>
+        <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/KindEditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/KindEditor/lang/zh_CN.js"></script>
+        <script language="javascript">
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="content"]', {
+					allowFileManager : true
+				});
+			});
+		</script>
+        <link rel="stylesheet" href="css/frame.css" type="text/css" />
+    </head>
+    <body>
+    	<center>
+        	<br />
+        	<form action="{:U('Article/article_add')}" method="post">
+            	<label>分类：</label>
+                    <select name="label">
+                		<foreach name="label_list" item="v">
+                        <option value="{$v['name']}">{$v['name']}</option>
+                        </foreach>
+                	</select>
+            	<label>标题：</label><input size="100" type="text" name="title" value="{$article['title']}" />&nbsp;<input type="submit" value="保存" /><br /><br />
+                <textarea cols="150" rows="28" name="content">{$article['content']}</textarea>
+                <br />
+                <input type="hidden" name="aid" value="{$article['aid']}" />
+            </form>
+            <br />
+        </center>
+    </body>
+</html>

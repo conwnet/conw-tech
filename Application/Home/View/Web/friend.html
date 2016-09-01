@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+	table {
+		margin: 0px auto;
+	}
+	th {
+		border-bottom: 2px solid #424F63;
+	}
+	input {
+		border: 2px solid;
+	}
+	tr:hover {
+		background-color: #EEE;
+	}
+</style>
+</head>
+<body>
+	<div style="margin: 20px;">
+		<table style="text-align: center; border: 3px;">
+		<caption><h2>友链管理</h2></caption>
+		<tr>
+			<th width="300px">友链名称</th>
+			<th width="300px">链接地址</th>
+			<th width="200px">保存</th>
+		</tr>
+		<foreach name="friend_list" item="v">
+			<tr>
+				<form action="{:U('Web/friend_update')}?fid={$v['fid']}" method="post">
+				<td><input type="text" name="name" value="{$v['name']}" /></td>
+				<td><input type="text" name="link" value="{$v['link']}" /></td>
+				<td><input type="submit" value="保存" /></td>
+				</form>
+			</tr>
+		</foreach>
+		</table>
+		<hr width="820px" /><br />
+	</div>
+</body>
+</html>

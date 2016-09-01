@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>专家信息登记</title>
+		<script src='__PUBLIC__/js/jquery.min.js'></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bootstrap.min.css">
+		<script language='javascript' src='../libs/getBase64PDF.js'></script>
+		<script language='javascript' src='__PUBLIC__/js/html2canvas.js'></script>
+		<script language='javascript'>
+			function getP()
+			{
+				getPDF($('#can'), 200, 0);
+			}
+		</script>
+		<style>
+			body {
+				background-color: #F4F9FF;
+			}
+			table {
+				border: 1px #DDD solid;
+			}
+			td {
+				border: 1px #DDD solid;
+			}
+			.btn {
+				color: #FFF;
+				cursor: pointer;
+				padding: 10px;
+				background-color: #5690F1;
+				border-radius: 10px;
+				width: 150px;
+				display: inline-block;
+				border: 0px;
+			}
+			#main, #can {
+				width: 1000px;
+				margin: auto;
+			}
+			.indexCont{width:1000px;margin:0 auto;}
+			/*footer*/
+			.footer {float:left;width:1000px;height:118px;background:#F4F9FF;margin-top:35px;}
+			.footer .f_line_top {float:left;width:1000px;height:10px;background:url(../img/footer_top.gif) no-repeat;}
+			.footer .f_txt {float: left;width: 1000px;text-align: center; display: block;margin-top: 15px;line-height: 24px;}
+			.footer .f_txt p {text-align: center;display: block;color:#656565;}
+		</style>
+	</head>
+	<body>
+		<h1 style="text-align: center;">辽宁省高校科技项目评估专家信息采集表</h1>
+		<center><h2><a href="{:U('Index/index')}">返回首页</a></h2></center>
+		<form id="content" action="{:U('Expert/expert_add')}" method='post' enctype="multipart/form-data" onsubmit='return check();'>
+		<div id='can'>
+		学校:	
+		<select name='school'>
+				<foreach name='school' item='v'>
+					<option value="{$v['name']}" >{$v['name']}</option>
+				</foreach>
+		</select>&nbsp;
+		<table width='1000' border='1' class="table">
+			<table width='1000' border='1'>
+				<tr>
+					<td>姓名</td>
+					<td><input name='name' type='text' value="{$info['name']}"></input></td>
+					<td>出生年月</td>
+					<td><input name='birthday' type='text' value="{$info['birthday']}"></input></td>
+					<td>民族</td>
+					<td><input name='nation' type='text' value="{$info['nation']}"></input></td>
+					<!--TODO-->
+					<td rowspan='5'>
+					<?php
+						if (isset($_GET['user_id']))
+							echo '<img src="../uploads/'.$_GET['user_id'].'.png" width="80" height="110" />';
+					?>
+					(一寸照片)<br /><input type='file' name='pic' /></td>
+				</tr>
+				<tr>
+					<td>性别</td>
+					<td><input name='sex' type='text' value="{$info['sex']}"></input></td>
+					<td>政治面貌</td>
+					<td><input name='what' type='text' value="{$info['what']}"></input></td>
+					<td>行政职务</td>
+					<td><input name='job' type='text' value="{$info['job']}"></input></td>
+				</tr>
+				<tr>
+					<td>职称</td>
+					<td><input name='job_name' type='text' value="{$info['job_name']}"></input></td>
+					<td>教授级别<br>(2，3，4级)</td>
+					<td><input name='job_level' type='text' value="{$info['job_level']}"></input></td>
+					<td>人才层次</td>
+					<td><input name='job_what' type='text' value="{$info['job_what']}"></input></td>
+				</tr>
+				<tr>
+					<td>办公电话</td>
+					<td><input name='tele' type='text' value="{$info['tele']}"></input></td>
+					<td>手机号码</td>
+					<td><input name='cell' type='text' value="{$info['cell']}"></input></td>
+				</tr>
+				<tr>
+					<td>最后学历</td>
+					<td><input name='last_a' type='text' value="{$info['last_a']}"></input></td>
+					<td>最后学位</td>
+					<td><input name='last_b' type='text' value="{$info['last_b']}"></input></td>
+					<td>担任导师<br>(硕/博)</td>
+					<td><input name='last_c' type='text' value="{$info['last_c']}"></input></td>
+				</tr>
+				<tr>
+					<td>工作单位</td>
+					<td><input name='for' type='text' value="{$info['for']}"></input></td>
+				</tr>
+				<tr>
+					<td>通讯地址</td>
+					<td><input name='addr' type='text' value="{$info['addr']}"></input></td>
+					<td>邮政编码</td>
+					<td><input name='code' type='text' value="{$info['code']}"></input></td>
+				</tr>
+				<tr>
+					<td>电子邮箱</td>
+					<td><input name='email' type='text' value="{$info['email']}"></input></td>
+					<td>二级学科</td>
+					<td><input name='sub' type='text' value="{$info['sub']}"></input></td>
+				</tr>
+			</table>
+			<table width='1000'border='1'>
+				<tr>
+					<td>所属技术领域</td>
+					<td>
+						<input <?php if($info['area'] == 1) echo 'checked'; ?> value='1' type='radio' name='area'>装备制造</input>
+						<input <?php if($info['area'] == 2) echo 'checked'; ?> value='2' type='radio' name='area'>新材料</input>
+						<input <?php if($info['area'] == 3) echo 'checked'; ?> value='3' type='radio' name='area'>新能源</input>
+						<input <?php if($info['area'] == 4) echo 'checked'; ?> value='4' type='radio' name='area'>信息技术</input>
+						<input <?php if($info['area'] == 5) echo 'checked'; ?> value='5' type='radio' name='area'>生物医药</input>
+						<input <?php if($info['area'] == 6) echo 'checked'; ?> value='6' type='radio' name='area'>节能环保</input>
+						<input <?php if($info['area'] == 7) echo 'checked'; ?> value='7' type='radio' name='area'>海洋科技</input>
+						<input <?php if($info['area'] == 8) echo 'checked'; ?> value='8' type='radio' name='area'>现代农业</input>
+						<input <?php if($info['area'] == 9) echo 'checked'; ?> value='9' type='radio' name='area'>其他</input>
+					</td>
+				</tr>
+				<tr>
+					<td>服务产业链</td>
+					<td>
+						<input <?php if($info['service'] == 1) echo 'checked'; ?> value='1' type='radio' name='service'>高档数控机床及自动化生产线</input>
+						<input <?php if($info['service'] == 2) echo 'checked'; ?> value='2' type='radio' name='service'>核电装备</input>
+						<input <?php if($info['service'] == 3) echo 'checked'; ?> value='3' type='radio' name='service'>特高压输变电设备</input>
+						<input <?php if($info['service'] == 4) echo 'checked'; ?> value='4' type='radio' name='service'>轨道交通设备</input>
+						<input <?php if($info['service'] == 5) echo 'checked'; ?> value='5' type='radio' name='service'>工程机械</input>
+						<input <?php if($info['service'] == 6) echo 'checked'; ?> value='6' type='radio' name='service'>工业机器人与专业机器人</input>
+						<input <?php if($info['service'] == 7) echo 'checked'; ?> value='7' type='radio' name='service'>IC设备</input>
+						<input <?php if($info['service'] == 8) echo 'checked'; ?> value='8' type='radio' name='service'>新一代信息技术</input>
+						<input <?php if($info['service'] == 9) echo 'checked'; ?> value='9' type='radio' name='service'>激光科技</input>
+						<input <?php if($info['service'] == 10) echo 'checked'; ?> value='10' type='radio' name='service'>海洋工程装备</input>
+						<input <?php if($info['service'] == 11) echo 'checked'; ?> value='11' type='radio' name='service'>风电装备</input>
+						<input <?php if($info['service'] == 12) echo 'checked'; ?> value='12' type='radio' name='service'>新能源汽车</input>
+						<input <?php if($info['service'] == 13) echo 'checked'; ?> value='13' type='radio' name='service'>航空装备</input>
+						<input <?php if($info['service'] == 14) echo 'checked'; ?> value='14' type='radio' name='service'>生物医药</input>
+						<input <?php if($info['service'] == 15) echo 'checked'; ?> value='15' type='radio' name='service'>节能环保</input>
+						<input <?php if($info['service'] == 16) echo 'checked'; ?> value='16' type='radio' name='service'>海洋资源利用</input>
+						<input <?php if($info['service'] == 17) echo 'checked'; ?> value='17' type='radio' name='service'>农业种子</input>
+						<input <?php if($info['service'] == 18) echo 'checked'; ?> value='18' type='radio' name='service'>其他</input>
+					</td>
+				</tr>
+			</table>
+			<table width='1000'border='1'>
+				<tr>
+					<td rowspan='5'>近5年承担主要纵向、横向课题情况</td>
+					<td>项目名称</td>
+					<td>批准单位</td>
+					<td>批准时间</td>
+					<td>排名</td>
+				</tr>
+				<tr>
+					<td><input name='work[0]' type='text' value="{$info['work[0]']}"></input></td>
+					<td><input name='work[1]' type='text' value="{$info['work[1]']}"></input></td>
+					<td><input name='work[2]' type='text' value="{$info['work[2]']}"></input></td>
+					<td><input name='work[3]' type='text' value="{$info['work[3]']}"></input></td>
+				</tr>
+				<tr>		
+					<td><input name='work[4]' type='text' value="{$info['work[4]']}"></input></td>
+					<td><input name='work[5]' type='text' value="{$info['work[5]']}"></input></td>
+					<td><input name='work[6]' type='text' value="{$info['work[6]']}"></input></td>
+					<td><input name='work[7]' type='text' value="{$info['work[7]']}"></input></td>
+				</tr>
+				<tr>
+					<td><input name='work[8]' type='text' value="{$info['work[8]']}"></input></td>
+					<td><input name='work[9]' type='text' value="{$info['work[9]']}"></input></td>
+					<td><input name='work[10]' type='text' value="{$info['work[10]']}"></input></td>
+					<td><input name='work[11]' type='text' value="{$info['work[11]']}"></input></td>
+				</tr>
+				<tr>
+					<td><input name='work[12]' type='text' value="{$info['work[12]']}"></input></td>
+					<td><input name='work[13]' type='text' value="{$info['work[13]']}"></input></td>
+					<td><input name='work[14]' type='text' value="{$info['work[14]']}"></input></td>
+					<td><input name='work[15]' type='text' value="{$info['work[15]']}"></input></td>
+				</tr>
+				<tr>
+					<td>近5年主要科技成果及获奖</td>
+					<td><input name='rise' type='text'value="{$info['rise']}"></input></td>
+				</tr>
+			</table>
+		</table><br /><br />
+		</div>
+		<center>
+		<div class='btn' onclick='getP();'>保存</div>
+		&nbsp;&nbsp;|&nbsp;&nbsp;
+		<input type="submit" class='btn'><br /><br />
+		</center>
+		<div id='main' style='display: none;'>
+			<center><br />
+				(以下信息为修改凭证,首次填写自动创建账号)<br /><br />
+				身份证号:	<input type='text' name='user_id' /><br /><br />
+				登录密码:	<input type='password' name='user_pw' /><br /><br /><br />
+				<input class='btn' type='submit' value='我确认数据无误,提交' />
+			</center>
+		</div>
+		</form>
+		<script language="javascript">
+			Array.prototype.indexOf = function(val) {
+				for (var i = 0; i < this.length; i++) {
+					if (this[i] == val) return i;
+				}
+				return -1;
+			};
+			Array.prototype.remove = function(val) {
+				var index = this.indexOf(val);
+				if (index > -1) {
+					this.splice(index, 1);
+				}
+			};
+			function check()
+			{
+				var keys = [
+				'name',
+				'birthday',
+				'nation',
+				'sex',
+				'what',
+				'job',
+				'job_name',
+				'job_level',
+				'job_what',
+				'tele',
+				'cell',
+				'last_a',
+				'last_b',
+				'last_c',
+				'for',
+				'addr',
+				'code',
+				'email',
+				'sub',
+				'area',
+				'service',
+				'rise',
+
+				];
+				var words = {
+				'name' : '姓名',
+				'birthday' : '出生年月',
+				'nation' : '民族',
+				'sex' : '性别',
+				'what' : '政治面貌',
+				'job' : '行政职务',
+				'job_name' : '职称',
+				'job_level' : '教授级别',
+				'job_what' : '人才层次',
+				'tele' : '办公电话',
+				'cell' : '手机号码',
+				'last_a' : '最后学历',
+				'last_b' : '最后学位',
+				'last_c' : '担任导师',
+				'for' : '工作单位',
+				'addr' : '通讯地址',
+				'code' : '邮政编码',
+				'email' : '电子邮箱',
+				'sub' : '二级学科',
+				'area' : '所属技术领域',
+				'service' : '服务产业链',
+				'rise' : '近五年获奖',
+
+				};
+				var fields = $("input").serializeArray();
+				var ret = true;
+				for (var i=0;i<keys.length;++i)
+					for (var j=0;j<fields.length;++j)
+					{
+						if (keys[i] == fields[j].name)
+						{
+							console.log(keys[i] + ":" + fields[j].value);
+							if (fields[j].value == "")
+								ret = false;
+							else
+								keys.remove(fields[j].name);
+						}
+					}
+				console.log(keys);
+				console.log(ret);
+				if (keys.length != 0)
+					ret = false;
+				if (!ret)
+				{
+					var str = '以下项目未填写,请填写!\n';
+					for (var i=0;i<keys.length;++i)
+						str += words[keys[i]] + '\n';
+					alert(str);
+					return false;
+				}
+				document.getElementById('content').submit();
+			}
+		</script>
+
+		<!--thr_3-end-->
+		<div class="indexCont">
+		    <div class="footer">
+		        <div class="f_line_top"></div>
+		        <span class="f_txt">
+		        	<p>版权所有  辽宁省教育厅科技发展中心 Copyright© 2016 All Rights Reserved</p>
+		        </span>
+		    </div>
+		</div>
+	</body>
+</html>
+

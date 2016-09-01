@@ -1,0 +1,43 @@
+<!DOCTYPE html">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+	table {
+		margin: 0px auto;
+	}
+	th {
+		border-bottom: 2px solid #424F63;
+	}
+	input {
+		border: 2px solid;
+	}
+	tr:hover {
+		background-color: #EEE;
+	}
+</style>
+</head>
+<body>
+	<div style="margin: 20px;">
+		<table style="text-align: center; border: 3px;">
+		<caption><h2>文章管理</h2></caption>
+		<th width="300px">文章名称</th>
+		<th width="200px">标签</th>
+		<th width="200px">作者</th>
+		<th width="200px">创建时间</th>
+		<th width="100px">编辑</th>
+		<th width="100px">删除</th>
+		<foreach name="article_list" item="v">
+			<tr>
+				<td>{$v['title']}</td>
+				<td>{$v['label']}</td>
+				<td>{$v['author']}</td>
+				<td>{:date('Y-m-d', $v['time'])}</td>
+				<td><a href="{:U('Article/create')}?aid={$v['aid']}">编辑</a></td>
+				<td><a href="{:U('Article/article_delete')}?aid={$v['aid']}">删除</a></td>
+			</tr>
+		</foreach>
+		</table>
+		<hr width="1120px" /><br />
+	</div>
+</body>
+</html>

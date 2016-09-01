@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$label}</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+	<link href="__PUBLIC__/css/index_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css">
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+</head>
+
+<body>
+<!--头部-->
+<div class="indexCont">
+<div class="headerCont">
+	<span class="header"><em class="m20">您好，欢迎来到辽宁高校科技成果转化平台！</em></span>
+	<span class="fl"><img src="__PUBLIC__/img/logo.gif" width="1000" height="180"/></span>
+	<div class="menu_nav clearfix">
+        <ul class="nav_content">
+            <li style="margin-left: -20px;"><a href="{:U('Index/index')}">网站首页</a></li>
+            <foreach name="nav_list" item="v">
+            <li><a href="{$v['link']}">{$v['name']}</a></li>
+            </foreach>
+        </ul>
+	    <div class="menu_nav_right"></div>
+        
+        <div class="search">
+        	<input class="s_txt" type="text"/>
+            <input class="s_sc" type="button" value=""/>
+        </div>
+	</div>   
+</div>
+</div>
+<div style="clear: both"></div>
+<!--工作动态列表部分-->
+<div class="gzdt">
+	<div class="gzdt_tit">
+		<div class="gzdt_le">
+			<p>{$label}</p>
+		</div>
+		<div class="gzdt_rig">
+			<p>当前位置：首页 > {$label}</p>
+		</div>
+	</div>
+	
+	<div class="gzdt_list">
+		<foreach name="article_list" item="v">
+		<div class="list_a">
+			<div class="list_jt">
+				<img src="__PUBLIC__/img/list_a.gif" width="5" height="7" >
+			</div>
+			<div class="list_tit">
+				<a class="list01" href="{:U('Index/view')}?aid={$v['aid']}">{$v['title']}</a>
+			</div>
+			<div class="list_time">
+				{:date('Y-m-d', $v['time'])}
+			</div>
+		</div>
+		</foreach>
+	</div>
+	<center>
+		<form action="{:U('Index/lists')}/label/通知公告">
+		<a href="{:U('Index/lists')}?label={$label}&page={$page-1}">上一页</a>&nbsp;&nbsp;第{$page}页
+		<a href="{:U('Index/lists')}?label={$label}&page={$page+1}">下一页</a>&nbsp;&nbsp;
+		<input type="hidden" value="{$page}" name="page" style="width:2em;" />&nbsp;
+		<input type="hidden" value="GO" />&nbsp;&nbsp;第{$p_count}页
+		</form>
+	</center>
+</div>
+<!--尾部-->
+<div class="indexCont">
+     <div class="footer">
+        <div class="f_line_top"></div>
+        <span class="f_txt">
+        	<p>版权所有  辽宁省教育厅科技发展中心 Copyright© 2016 All Rights Reserved</p>
+        	<p>制作维护：沈阳航空航天大学 计算机学院</p>
+        </span>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
+

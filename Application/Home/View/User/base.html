@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>辽宁省科技成功转化网</title>
+	<style>
+		#container {
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<form action="{:U('User/base_update')}" method="post">
+			用户名： {$user['user']} <br /><br />
+			<?php if($user['power']>0) { ?>
+			学　校： {$user['school']} <br /><br />
+			<?php } ?>
+			<?php if($user['power']>2) { ?>
+			学　院： {$user['sector']} <br /><br />
+			<?php } ?>
+			身　份： {:power2job($user['power'])} <br /><br />
+			昵　称： <input type="text" name="nick" value="{$user['nick']}" /> <br /><br />
+			旧密码： <input type="password" name="pass" /> <br /><br />
+			新密码： <input type="password" name="new_pass" /> <br /><br />
+			确认密码： <input type="password" /> <br /><br />
+			<input type="submit" value="提交" />
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$label}</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+	<link href="__PUBLIC__/css/index_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css">
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+</head>
+
+<body>
+<!--头部-->
+<div class="indexCont">
+<div class="headerCont">
+	<span class="header"><em class="m20">您好，欢迎来到辽宁高校科技成果转化平台！</em></span>
+	<span class="fl"><img src="__PUBLIC__/img/logo.gif" width="1000" height="180"/></span>
+	<div class="menu_nav clearfix">
+        <ul class="nav_content">
+            <li style="margin-left: -20px;"><a href="{:U('Index/index')}">网站首页</a></li>
+            <foreach name="nav_list" item="v">
+            <li><a href="{$v['link']}">{$v['name']}</a></li>
+            </foreach>
+        </ul>
+	    <div class="menu_nav_right"></div>
+        
+        <div class="search">
+        	<input class="s_txt" type="text"/>
+            <input class="s_sc" type="button" value=""/>
+        </div>
+	</div>   
+</div>
+</div>
+<div style="clear: both"></div>
+<!--列表部分-->
+<div class="gzdt">
+	<div class="gzdt_tit">
+		<div class="gzdt_le">
+			<p>{$label}</p>
+		</div>
+		<div class="gzdt_rig">
+			<p>当前位置：首页 > {$label}</p>
+		</div>
+	</div><br />
+	<center>
+		<table>
+			<tr style="font-size: 20px; font-weight: bold; text-align: center;">
+				<td width="300px"><?php if($db != 1) echo '<a href="'.U('Index/data').'?db=1" style="font-size: 20px; font-weight: bold; text-align: center; color: blue;">'; ?>
+					辽宁高校科研成果列表<?php echo '</a>'; ?></td>
+				<td width="300px"><?php if($db != 2) echo '<a href="'.U('Index/data').'?db=2" style="font-size: 20px; font-weight: bold; text-align: center; color: blue;">'; ?>
+					企业技术需求列表<?php echo '</a>'; ?></td>
+				<td width="300px"><?php if($db != 3) echo '<a href="'.U('Index/data').'?db=3" style="font-size: 20px; font-weight: bold; text-align: center; color: blue;">'; ?>
+					专家信息列表<?php echo '</a>'; ?></td>
+			</tr>
+		</table><br />
+		<form action='{:URL()}' method="get">
+			<input type="hidden" name="db" value="{$db}" />
+			<input type="hidden" name="page" value="{$page}" />
+			<select name="item">
+				<option value="0">请选择查询条件</option>
+				<option value="1">名称</option>
+				<option value="2">单位</option>
+				<option value="3">学科</option>
+				<option value="4">负责人</option>
+				<option value="5">所属技术领域</option>
+				<option value="6">服务产业链</option>
+				<option value="7"> 知识产权形式</option>
+			</select>&nbsp;
+			<input type="text" name="val" style="border:1px solid;"/>&nbsp;
+			<input type="submit" value="查询" />
+		</form>
+	</center>
+	<table class="report_list">
+			<tr class="report_head">
+				<th width='50px'>序号</th>
+				<th width='350px'>名称</th>
+				<th width='200px'>单位</th>
+				<th width='200px'>学科</th>
+				<th width='200px'>负责人</th>
+			</tr>
+			<foreach name="report_list" item="v">
+			<tr class="report_body">
+				<td>{$page*15+(++$i)-15}</td>
+				<td style="text-align: left;"><a href="{:U('Index/report')}?db={$db}&rid={$v['rid']}" target="_blank">{$v['p_name']}</a></td>
+				<td>{$v['company']}</td>
+				<td>{$v['p_code_name']}</td>
+				<td>{$v['owner']}</td>
+			</tr>
+			</foreach>
+	</table>
+	<hr width="900px" />
+	<center>
+		<form>
+		<a href="{:U('Index/data')}?db={$db}&item={$item}&val={$val}&page={$page-1}">上一页</a>&nbsp;&nbsp;
+		<a href="{:U('Index/data')}?db={$db}&item={$item}&val={$val}&page={$page+1}">下一页</a>&nbsp;&nbsp;
+		第<input type="text" id="go_page" value="{$page}" name="page" style="width:2em;" />页&nbsp;
+		<input type="button" value="GO" onclick="goto_page()" />&nbsp;共{$p_count}页
+		</form>
+	</center>
+	<script>
+		function goto_page() {
+			window.location.href = "{:U('Index/data')}?db={$db}&item={$item}&val={$val}&page=" + document.getElementById('go_page').value;
+		}
+	</script>
+</div>
+<!--尾部-->
+<div class="indexCont">
+    <div class="footer">
+        <div class="f_line_top"></div>
+        <span class="f_txt">
+        	<p>版权所有  辽宁省教育厅科技发展中心 Copyright© 2016 All Rights Reserved</p>
+        	<p>制作维护：沈阳航空航天大学 计算机学院</p>
+        </span>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+<!-- 单位 学科 名称 完成人 -->
+
+

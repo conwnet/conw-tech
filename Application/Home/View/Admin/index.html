@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台管理系统</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/admin.css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/admin.js"></script>
+</head>
+
+<body>
+<div class="nav-top">
+	<span>后台管理系统</span><span><a href="{:U('Index/index')}" style="color:#FFF">返回首页</a></span>
+    <div class="nav-topright">
+    	<p>当前系统时间：{:date('Y-m-d H:i:s')}&nbsp;&nbsp;登陆IP：{$_SERVER['REMOTE_ADDR']}</p>
+        <span>您好：{$_SESSION['nick']}</span><span><a href="{:U('Login/logout')}" style="color: #FFF;">注销</a></span>
+    </div>
+</div>
+<div class="nav-down">
+	<div class="leftmenu1">
+        <div class="menu-oc"><img src="__PUBLIC__/img/menu-all.png" /></div>
+    	<ul>
+        	<li>
+            	<a class="a_list a_list1">成果管理</a>
+                <div class="menu_list menu_list_first">
+                	<a class="lista_first new_report" href="#">新建成果</a>
+           			<?php if($_SESSION['power']==0 || $_SESSION['power']==1 || $_SESSION['power']==2) { ?>
+                    <a class="rev_report" href="#">成果审核</a>
+                    <a class="mgr_report" href="#">成果列表</a>
+                    <a class="rev_expert" href="#">专家审核</a>
+                    <a class="mgr_expert" href="#">专家列表</a>
+                    <a class="new_demand" href="#">新建需求</a>
+                    <a class="rev_demand" href="#">需求审核</a>
+                    <a class="mgr_demand" href="#">需求列表</a>
+            		<?php } ?>
+                </div>
+            </li>
+            <?php if($_SESSION['power']==0 || $_SESSION['power']==1 || $_SESSION['power']==2) { ?>
+            <li>
+            	<a class="a_list a_list2">用户管理</a>
+                <div class="menu_list">
+                	<a class="base_info" href="#">基本信息</a>
+                    <a class="rev_user" href="#">账户审核</a>
+                    <a class="mgr_user" href="#">成员管理</a>
+                </div>
+            </li>
+            <?php } ?>
+            <?php if($_SESSION['power']==0) { ?>
+            <li>
+            	<a class="a_list a_list3">文章管理</a>
+                <div class="menu_list">
+                	<a class="new_article" href="#">新建文章</a>
+                    <a class="mgr_article" href="#">管理文章</a>
+                    <a class="mgr_label" href="#">标签管理</a>
+                </div>
+            </li>
+            <?php } ?>
+            <?php if($_SESSION['power']==0) { ?>
+            <li>
+                <a class="a_list a_list4">网站管理</a>
+                <div class="menu_list">
+                    <a class="base_par" href="#">基本参数</a>
+                    <a class="mgr_nav" href="#">导航管理</a>
+                    <a class="mgr_fri" href="#">友链管理</a>
+                </div>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+    <div class="leftmenu2">
+        <ul>
+            <li>
+            <div class="menu-oc1"><img src="__PUBLIC__/img/menu-all.png" /></div>
+            </li>
+        	<li>
+            	<a class="j_a_list j_a_list1"></a>
+                <div class="j_menu_list j_menu_list_first">
+                	<span class="sp1"><i></i>成果管理</span>
+                	<a class="j_lista_first new_report" href="#">新建成果</a>
+           			<?php if($_SESSION['power']==0 || $_SESSION['power']==1 || $_SESSION['power']==2) { ?>
+                    <a class="rev_report" href="#">成果审核</a>
+                    <a class="mgr_report" href="#">成果列表</a>
+                    <a class="rev_expert" href="#">专家审核</a>
+                    <a class="mgr_expert" href="#">专家列表</a>
+                    <a class="new_demand" href="#">新建需求</a>
+                    <a class="rev_demand" href="#">需求审核</a>
+                    <a class="mgr_demand" href="#">需求列表</a>
+            		<?php } ?>
+                </div>
+            </li>
+            <?php if($_SESSION['power']==0 || $_SESSION['power']==1 || $_SESSION['power']==2) { ?>
+            <li>
+            	<a class="j_a_list j_a_list2"></a>
+                <div class="j_menu_list">
+                	<span class="sp2"><i></i>用户管理</span>
+                	<a class="base_info" href="#">基本信息</a>
+                    <a class="rev_user" href="#">账户审核</a>
+                    <a class="mgr_user" href="#">成员管理</a>
+                </div>
+            </li>
+            <?php } ?>
+            <?php if($_SESSION['power']==0) { ?>
+            <li>
+            	<a class="j_a_list j_a_list3"></a>
+                <div class="j_menu_list">
+                	<span class="sp3"><i></i>文章管理</span>
+                	<a class="new_article" href="#">新建文章</a>
+                    <a class="mgr_article" href="#">管理文章</a>
+                    <a class="mgr_label" href="#">标签管理</a>
+                </div>
+            </li>
+            <?php } ?>
+            <?php if($_SESSION['power']==0) { ?>
+            <li>
+                <a class="j_a_list j_a_list4"></a>
+                <div class="j_menu_list">
+                    <span class="sp4"><i></i>网站管理</span>
+                    <a class="base_par" href="#">基本参数</a>
+                    <a class="mgr_nav" href="#">导航管理</a>
+                    <a class="mgr_fri" href="#">友链管理</a>
+                </div>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+    <div class="rightcon">
+    	<div class="right_con">
+        	<iframe class="frame" src="{:U('Admin/hello')}" width="100%" height="650px"></iframe>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+        $(".new_article").click(function() {
+            $(".frame").attr("src", "{:U('Article/create')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".mgr_article").click(function() {
+            $(".frame").attr("src", "{:U('Article/edit')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".mgr_label").click(function() {
+            $(".frame").attr("src", "{:U('Article/label')}");
+        });
+    });
+
+    $(document).ready(function() {
+        $(".base_info").click(function() {
+            $(".frame").attr("src", "{:U('User/base')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".rev_user").click(function() {
+            $(".frame").attr("src", "{:U('User/review')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".mgr_user").click(function() {
+            $(".frame").attr("src", "{:U('User/manage')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".mgr_expert").click(function() {
+            $(".frame").attr("src", "{:U('Expert/update')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".rev_expert").click(function() {
+            $(".frame").attr("src", "{:U('Expert/review')}");
+        });
+    });
+
+    $(document).ready(function() {
+        $(".new_report").click(function() {
+            $(".frame").attr("src", "{:U('Report/insert')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".rev_report").click(function() {
+            $(".frame").attr("src", "{:U('Report/review')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".mgr_report").click(function() {
+            $(".frame").attr("src", "{:U('Report/update')}");
+        });
+    });
+
+    $(document).ready(function() {
+        $(".base_par").click(function() {
+            $(".frame").attr("src", "__PUBLIC__/yhtz/tz.php");
+        });
+    });
+
+    $(document).ready(function() {
+        $(".mgr_nav").click(function() {
+            $(".frame").attr("src", "{:U('Web/nav')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".mgr_fri").click(function() {
+            $(".frame").attr("src", "{:U('Web/friend')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".new_demand").click(function() {
+            $(".frame").attr("src", "{:U('Demand/insert')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".mgr_demand").click(function() {
+            $(".frame").attr("src", "{:U('Demand/update')}");
+        });
+    });
+    $(document).ready(function() {
+        $(".rev_demand").click(function() {
+            $(".frame").attr("src", "{:U('Demand/review')}");
+        });
+    });
+    $(document).ready(function() {
+        $('.menu-oc1').click();
+    });
+
+</script>
+

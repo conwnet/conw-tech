@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>辽宁高校科技成果转化平台</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/view.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div class="indexCont">
+    <div class="headerCont">
+    	<span class="header"><em class="m20">您好，欢迎来到辽宁高校科技成果转化平台！</em></span>
+    	<span class="fl"><img src="__PUBLIC__/img/logo.gif" width="1000" height="180"/></span>
+    	<div class="menu_nav clearfix">
+            <ul class="nav_content">
+                <li style="margin-left: -20px;"><a href="{:U('Index/index')}">网站首页</a></li>
+                <foreach name="nav_list" item="v">
+                <li><a href="{$v['link']}">{$v['name']}</a></li>
+                </foreach>
+            </ul>
+    	    <div class="menu_nav_right"></div>
+            
+            <div class="search">
+            	<input class="s_txt" type="text"/>
+                <input class="s_sc" type="button" value=""/>
+            </div>
+    	</div>   
+    </div>
+</div>
+<div class="blank"></div>
+<div class="container">
+    <div class="content">
+        <div class="title_box">
+            <h2>{$article['title']}</h2><br />
+            <p>时间：{:date('Y-m-d', $article['time'])}</p><br />
+        </div>
+        <div id="content_box">
+            {:htmlspecialchars_decode($article['content'])}
+        </div>
+    </div>
+    <div class="footer">
+        <div class="f_line_top"></div>
+        <span class="f_txt">
+            <p>版权所有  辽宁省教育厅科技发展中心 Copyright© 2016 All Rights Reserved</p>
+            <p>制作维护：沈阳航空航天大学 计算机学院</p>
+        </span>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,322 @@
+body {margin:0;padding:0; font-size: 12px;font-family: "微软雅黑", Verdana;}
+h1, h2, h3, h4, h5, h6, p, a, em, font, img, strong, b,dl, dt, dd,form, label,ol,ul,li,legend,span,input{border:0;margin:0;padding:0;}
+ol,ul{list-style:none;}
+ul li {list-style: none;}
+a{text-decoration: none;color:#333;cursor:pointer;outline: none;}
+a:hover{text-decoration: underline;}
+table {border-collapse: collapse;}
+input{ outline:none}
+i,em{font-style:normal;}
+html,body,strong,div,ul,li,ol,p,form,span,a,img,h1,h2,h3,h4,h5,h6,del,dl,dd,dt,textarea,label,fieldset{margin:0px;padding:0px;font-style:normal;font-size:12px;color:#4b4b4b;font-weight:normal;outline:none;}
+input {margin:0px;padding:0px;font-style:normal;color:#4b4b4b;font-weight:normal;outline:none;}
+.m0a { margin:0px auto;}
+textarea {resize:none;}
+		
+.header  a {color: #0064a2;font-weight:bold;}
+/*意见反馈部分样式*/	
+#yjfk{
+	width:920px;
+	margin:5px auto;
+	padding:10px;
+	zoom:1;
+	z-index:1;
+}
+.sub_yj{
+	width:740px;
+	border-bottom:1px solid #cecece;
+	padding-bottom:20px;
+	margin:0px auto;
+	overflow:hidden;
+}	
+.sub_yj p{
+	font-size:20px;
+	color:#3e9ce9;
+	font-weight:bold;
+	margin-bottom:10px;
+	line-height:40px;
+	margin-left:15px;
+	
+}	
+.textarea{
+	width:710px;
+	margin:0 auto;
+	padding:15px;
+}	
+.sub_yj textarea{
+	margin:0 auto;
+	width:700px;
+	height:170px;
+	color:#999;
+	font-size:14px;
+	padding:4px;
+	border:1px solid #c3c3c3;
+	border-radius:6px;
+}	
+.sub_yj textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.txt_tz{
+	text-align:right;
+	margin:5px 40px 0 0;
+	color:#666;
+}	
+.txt_tz .count{
+	color:#ff0000;
+}
+.sub_yj input{
+	cursor:pointer;
+	margin-left:600px;
+	background:url(../img/tj.png);
+	width:90px;
+	height:30px;
+	color:#ffffff;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	margin-top:5px;
+}
+
+/*工作动态部分样式*/
+.gzdt{
+	width:1000px;
+	margin:0 auto;
+	margin-top:5px;
+}
+.gzdt_tit{
+	width:1000px;
+	height:30px;
+	background:url(../img/gzdt.gif);
+}
+
+.gzdt_le p{
+	font-family: "宋体";
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	margin-left:50px;
+	float:left;
+}
+.gzdt_rig p{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 30px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+	float:right;
+	margin-right:50px;
+}
+.gzdt_list{
+	width:1000px;
+	margin-top:10px;
+	height:330px;
+	overflow:hidden;
+}
+.list_a{
+	width:1000px;
+	height:28px;
+
+}
+.list_jt{
+	float:left;
+	margin-left:50px;
+	margin-top:0px;
+}
+
+.list_tit{
+	float:left;
+	margin-left:10px;
+}
+
+.list01 {
+	font-family: 宋体;
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: normal;
+	color: #333333;
+	text-decoration: none;
+}
+
+.list_tit a {
+	text-decoration: none;
+	width: 600px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.list_tit a:link ,.report_head a:link{
+	color: #333333;
+	text-decoration: none;
+}
+
+.list_tit a:hover{
+	color: #2D6DB5;
+	text-decoration: underline;
+}
+
+.list_time{
+	float:right;
+	margin-right:50px;
+	line-height:24px;
+	color: #333333;
+}
+#paging{
+    height: 30px;
+    margin:0px auto;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.paging_bg1{
+    width: 24px;
+    height: 25px;
+    float: left;
+    background: url("../img/paging_bg1.gif");
+    margin: 0px 3px;
+    border: 1px solid #d2d2d2;
+    border-radius: 4px;
+}
+.jt_le{
+    margin-left: 8px;
+    margin-top: 8px;
+}
+.paging_bg2{
+    width: 24px;
+    height: 25px;
+    float: left;
+    background: url("../img/paging_bg2.jpg");
+    margin: 0px 3px;
+    border: 1px solid #2a7bbd;
+    border-radius: 4px;
+}
+.paging_p1{
+	color: #ffffff;
+	font-size: 13px;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0px;
+}
+.paging_p2{
+    color: #333333;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 0px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.paging_bg1 a,.paging_bg2 a{
+	text-decoration:none;
+}
+
+/*动态内容部分样式*/
+.dtnr_le  p{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 30px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+	float:left;
+	margin-left:50px;
+}
+
+.dt_cont{
+	width:900px;
+	margin:0 auto;
+}
+.dt_tit{
+	width:900px;
+	height:50px;
+}
+.title_p{
+	font-family: "宋体";
+	font-size: 18px;
+	line-height: 50px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	text-align: center;
+}
+
+.dt_xx{
+    float: left;
+    width: 900px;
+    height: 30px;
+}
+.dt_time{
+    float: left;
+    width: 450px;
+    height: 30px;
+}
+.time_p1{
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    color: #666666;
+    font-size: 14px;
+    margin-top: 0px;
+    text-align: center;
+    margin-right: 10px;
+}
+.time_p2{
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    color: #666666;
+    font-size: 14px;
+    margin-top: 0px;
+    text-align: center;
+}
+.news_content{
+    width: 900px;
+    margin-top: 25px;	
+	font-size:16px;
+	line-height:24px;
+	margin-bottom: 20px;	
+}
+.line{
+    float: left;
+    width:900px;
+    height:15px;
+    border-bottom: 1px dashed #ccc;
+	margin-bottom:15px; 
+}
+/*考评文件部分样式*/
+.report_list {
+	width:900px;
+	margin:0 auto;
+}
+.report_list tr td{
+	text-align: center;
+}
+
+.report_head{
+	width:900px;
+}
+.report_body{
+	width:900px;
+	margin:0 auto;
+	height:28px;
+}
+
+.report_head a{
+	margin-left: 50px;
+	float: left;
+	font-size: 12px;
+	color: #333333;
+	line-height: 28px;
+	width: 600px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: inline-block;
+	white-space: nowrap;
+	text-decoration:none;
+}

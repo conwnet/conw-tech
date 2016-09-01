@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Index</title>
+		<script language='javascript' src='__PUBLIC__/js/jquery.min.js'></script>
+		<script language='javascript'>
+			function school()
+			{
+				$("#student").hide();
+				$("#school").show();
+			}
+			function student()
+			{
+				$("#school").hide();
+				$("#student").show();
+			}
+			function check()
+			{
+				if ($('input[name=pass]').val()!=$('#school input[class=repass]').val()) {
+					alert('两次密码输入不一致...');
+					return false;
+				} else {
+					return true;
+				}
+			}
+		</script>
+		<style>
+			.register_form input {
+				width: 175px;
+			}
+		</style>
+	</head>
+	<body style="background-image: url(__PUBLIC__/img/back.png);">
+		<center>
+			<link rel='stylesheet' href='css/common.css' type='text/css' />
+<center>
+	<a href="{:U('Index/index')}"><img src='__PUBLIC__/img/logo.gif' width='900' height='180' /></a>
+</center>
+			<br />
+			<a href='#' onclick='javascript:school();'>二级管理员注册</a>
+			&nbsp;|&nbsp;
+			<a href='#' onclick='javascript:student();'>项目负责人注册</a>
+			<br />
+			<br />
+			<!--仅开发提示用
+			<font style='color: #F00;'>以下信息仅做参考，具体可以根据需求添加。</font>
+			<br />
+			<br />
+			仅开发提示用-->
+			<div id='school' class='register_form'>
+			<p>学校负责人<p>
+				<form action='{:U('Login/insert')}' method='post' onsubmit='return check();'>
+					<label>帐　号：</label><input type='text' name='user' /><br />
+			<br />
+					<label>密　码：</label><input type='password' name='pass' /><br />
+			<br />
+					<label style="position: relative; right: 8px;">确认密码：</label><input type='password' class='repass' style="position: relative; right: 8px;" /><br />
+			<br />
+
+					<label>昵　称：</label><input type='text' name='nick' /><br />
+			<br />
+					<label>学　校：</label><select name='school'>
+						<foreach name="school_list" item="v">
+						<option value="{$v['name']}">{$v['name']}</option>
+						</foreach>
+					</select><br />
+			<br />
+					<input type="hidden" name="who" value="2" />
+					<input type='submit' name='submit' value='提交' />
+				</form>
+			</div>
+			<div id='student' class='register_form' style='display: none;'>
+			<p>项目负责人<p>
+				<form action='{:U('Login/insert')}' method='post' onsubmit='return check();'>
+					<label>帐　号：</label><input type='text' name='user' /><br />
+			<br />
+					<label>密　码：</label><input type='password' name='pass' /><br />
+			<br />
+					<label style="position: relative; right: 8px;">确认密码：</label><input type='password' class='repass' style="position: relative; right: 8px;" /><br />
+			<br />
+					<label>昵　称：</label><input type='text' name='nick' /><br />
+			<br />
+					<label>学　校：</label>
+					<select name='school'>
+						<foreach name="school_list" item="v">
+						<option value="{$v['name']}">{$v['name']}</option>
+						</foreach>
+					</select><br />
+			<br />
+					<label>学　院：</label><input type='text' name='sector' /><br />
+			<br />
+					<input type="hidden" name="who" value="3" />
+					<input type='submit' name='submit' value='提交' />
+				</form>
+			</div>
+			<div>
+				<br />
+				<br />
+				科技项目成果管理系统<br />
+				<br />
+			</div>
+		</center>
+	</body>
+<link rel="stylesheet" type="text/css" href="css/lq.datetimepick.css"/>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src='js/selectUi.js' type='text/javascript'></script>
+<script src='js/lq.datetimepick.js' type='text/javascript'></script>
+<script type="text/javascript">
+$(function (){
+	$(".bth").on("click",function(e){
+		e.stopPropagation();
+		$(this).lqdatetimepicker({
+			css : 'datetime-day',
+			dateType : 'D',
+			selectback : function(){}
+		});
+	});
+});
+</script>
+</html>
+

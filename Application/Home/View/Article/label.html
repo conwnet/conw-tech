@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+	table {
+		margin: 0px auto;
+	}
+	th {
+		border-bottom: 2px solid #424F63;
+	}
+	input {
+		border: 2px solid;
+	}
+	tr:hover {
+		background-color: #EEE;
+	}
+</style>
+</head>
+<body>
+	<div style="margin: 20px;">
+		<table style="text-align: center; border: 3px;">
+		<caption><h2>标签管理</h2></caption>
+		<tr>
+			<th width="200px">标签名称</th>
+			<th width="400px"></th>
+			<th width="200px">删除</th>
+		</tr>
+		<foreach name="label_list" item="v">
+			<tr>
+				<td>{$v['name']}</td>
+				<td></td>
+				<td>
+				<a href="{:U('Article/label_delete')}?lid={$v['lid']}">删除</a></td>
+			</tr>
+		</foreach>
+		</table>
+		<hr width="820px" /><br />
+		<center>
+		<form action="{:U('Article/label_add')}" method="post">
+		<input name="name" type="text" /> <input type="submit" value="添加" />
+		</form>
+		</center>
+	</div>
+</body>
+</html>

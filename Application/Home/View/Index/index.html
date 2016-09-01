@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>辽宁高校科技成果转化平台</title>
+<link href="__PUBLIC__/css/index_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/MyCxcPlug.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div class="indexCont">
+    <div class="headerCont">
+    	<span class="header"><em class="m20">您好，欢迎来到辽宁高校科技成果转化平台！</em></span>
+    	<span class="fl"><img src="__PUBLIC__/img/logo.gif" width="1000" height="180"/></span>
+    	<div class="menu_nav clearfix">
+            <ul class="nav_content">
+                <li style="margin-left: -20px;"><a href="{:U('Index/index')}">网站首页</a></li>
+                <foreach name="nav_list" item="v">
+                <li><a href="{$v['link']}">{$v['name']}</a></li>
+                </foreach>
+            </ul>
+    	    <div class="menu_nav_right"></div>
+            
+            <div class="search">
+            	<input class="s_txt" type="text"/>
+                <input class="s_sc" type="button" value=""/>
+            </div>
+    	</div>   
+    </div>
+    <div style="clear: both"></div>
+    <!--first_1-->
+    <div class="first_1">
+    	<div class="l_scorll">
+			<div class="Warp" id="Warp">
+				<ul id="pic">
+					<li><a target="_blank" href=""><img src="__PUBLIC__/img/1.jpg" width="319" height="240"></a></li>
+					<li><a target="_blank" href=""><img src="__PUBLIC__/img/2.jpg" width="319" height="240"></a></li>
+					<li><a target="_blank" href=""><img src="__PUBLIC__/img/3.jpg" width="319" height="240"></a></li>
+					<li><a target="_blank" href=""><img src="__PUBLIC__/img/4.jpg" width="319" height="240"></a></li>
+					<li><a target="_blank" href=""><img src="__PUBLIC__/img/5.jpg" width="319" height="240"></a></li>
+				</ul>
+			</div>
+            <p class="s_b_p"><i>风景欣赏</i></p>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				CxcFocus({
+					Id:"Warp",//主ID
+					Time:3000//每个几秒执行
+				});
+			});
+			</script>
+		</div>
+        <div class="list_right">
+            <h4 class="h_tit">
+                <i>通知公告</i><span class="fr mr20"><a href="{:U('Index/lists')}?label=通知公告">更多>></a></span>
+            </h4>
+            <ul>
+                <foreach name="article_tongzhi" item="v">
+                <li><a href="{:U('Index/view')}?aid={$v['aid']}">{$v['title']}</a><em>{:date('Y-m-d', $v['time'])}</em></li>
+                </foreach>
+            </ul>
+    	</div>
+    </div>
+	<!--first_1-end-->
+   
+    <!--sec_2-start-->
+    <div class="sec_2">
+    	<div class="s_left">
+        	<h4 class="h_tit">
+                <i>工作动态</i><span class="fr mr20"><a href="{:U('Index/lists')}?label=工作动态">更多>></a></span>
+            </h4>
+            <table border="0" class="tab_border" cellspacing="0" cellpadding="0">
+            	<thead>
+                    <tr>
+                        <th style="width:450px;">标题</th>
+                        <th style="width:97px;"></th>
+                        <th style="width:200px;">时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <foreach name="article_gongzuo" item="v">
+                    <tr>
+                        <td style="text-align: left; text-indent: 2em;"><a href="{:U('Index/view')}?aid={$v['aid']}">{$v['title']}</a></td>
+                        <td></td>
+                        <td>{:date('Y-m-d', $v['time'])}</td>
+                    </tr>
+                    </foreach>
+                </tbody>
+            </table>
+        </div>
+        <div class="user_login">
+        	<h4 class="h_tit">
+                <i class="fl">用户登录</i>
+            </h4>
+        	<div class="form_log">
+                <?php if($_SESSION['login']===true) { ?>
+                <p style="margin:10px;">欢迎您，{$_SESSION['nick']}，您的身份是{:power2job($_SESSION['power'])}</p>
+                <p style="margin:10px;"><a href="{:U('Login/logout')}" style="color:#F00;">注销登录</a> <a href="{:U('Admin/index')}" style="color:#00F;">进入后台</a></p>
+                <?php } else { ?>
+                <form action="{:U('Login/check')}" method="post">
+            	<p><label class="l_arr">用户名：</label><input class="l_txt" type="text" name="user" /></p>
+                <p><label class="l_arr">密&nbsp;&nbsp;&nbsp;码：</label><input class="l_txt" type="password" name="pass" /></p>
+                <!--<p><label class="fl l_arr">验证码：</label><span class="fl"><img src="__PUBLIC__/img/ya.gif" width="69" height="27"/></span></p>-->
+                <p><input class="log_btn"type="submit" value="登录"/></p>
+                <p style="padding-top: 7px;">&nbsp;<a href="{:U('Login/register')}" style="font-size: 15px;">注册</a></p>
+                </form>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    <!--sec_2-end-->
+    
+    <!--thr_3-start-->
+    <div class="thr_3">
+    	<div class="s_left">
+        	<h4 class="h_tit">
+                <i>最新成果</i>
+            </h4>
+            <div class="bor">
+            <table border="0" class="tab_border" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th style="width:450px;">标题</th>
+                        <th style="width:97px;"></th>
+                        <th style="width:200px;">时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <foreach name="reports" item="v">
+                    <tr>
+                        <td style="text-align: left; text-indent: 2em;"><a href="{:U('Index/report')}?rid={$v['rid']}">{$v['p_name']}</a></td>
+                        <td></td>
+                        <td>{:date('Y-m-d', $v['s_time'])}</td>
+                    </tr>
+                    </foreach>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        
+        <div class="user_login">
+        	<h4 class="h_tit">
+                <i class="fl">友情链接</i>
+            </h4>
+            <div class="t_cont_list">
+            	<ul class="t_list_ul">
+                    <foreach name="friend_list" item="v"> 
+                	<li><a href="{$v['link']}">{$v['name']}</a></li><br />
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--thr_3-end-->
+<div class="indexCont">
+    <div class="footer">
+        <div class="f_line_top"></div>
+        <span class="f_txt">
+        	<p>版权所有  辽宁省教育厅科技发展中心 Copyright© 2016 All Rights Reserved</p>
+        	<p>制作维护：沈阳航空航天大学 计算机学院</p>
+        </span>
+    </div>
+</div>
+</body>
+</html>
+

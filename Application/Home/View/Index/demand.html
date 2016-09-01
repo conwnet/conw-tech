@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">企业技术需求登记表</h1>
+    <form method="post" class="form-horizontal table-bordered"><br>
+        <input value="{$info['did']}" type="hidden" name="did" />
+        <div class="form-group">
+            <label class="col-md-2 control-label">课题名称：</label>
+            <div class="col-md-10">
+                <input type="text" name="name" value="{$info['name']}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">所属行业：</label>
+            <div class="col-md-10">
+                <input type="text" name="industry" value="{$info['industry']}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">联系人：</label>
+            <div class="col-md-4">
+                <input type="text" name="contact" value="{$info['contact']}" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">电话：</label>
+            <div class="col-md-4">
+                <input type="text" name="tel" value="{$info['tel']}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">电子邮件：</label>
+            <div class="col-md-4">
+                <input type="text" name="email" value="{$info['email']}" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">传真：</label>
+            <div class="col-md-4">
+                <input type="text" name="fax" value="{$info['fax']}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">企业资产：</label>
+            <div class="col-md-4">
+                <input type="text" name="money" value="{$info['money']}" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">占地面积：</label>
+            <div class="col-md-4">
+                <input type="text" name="area" value="{$info['area']}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">高级技术人员：</label>
+            <div class="col-md-1">
+                <input type="text" name="hpeople" value="{$info['hpeople']}" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">中级技术人员：</label>
+            <div class="col-md-1">
+                <input type="text" name="mpeople" value="{$info['mpeople']}" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">工人：</label>
+            <div class="col-md-1">
+                <input type="text" name="worker" value="{$info['worker']}" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">专业管理人员：</label>
+            <div class="col-md-1">
+                <input type="text" name="propeple" value="{$info['propeple']}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">企业专利拥有<br>及近三年内&nbsp;&nbsp;<br>申请情况：</label>
+            <div class="col-md-4">
+                <textarea class="form-control" name="patent" rows="4">{$info['patent']}</textarea>
+            </div>
+            <label class="col-md-2 control-label">省市科技项<br>目申请立项<br>情况：</label>
+            <div class="col-md-4">
+                <textarea class="form-control" name="project" rows="4">{$info['project']}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">现　　<br>有　　<br>基　　<br>础　　</label>
+            <div class="col-md-10">
+                <textarea class="form-control" name="proname" rows="4">{$info['proname']}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">技 术　<br>需 求　<br>说 明　</label>
+            <div class="col-md-10">
+                <textarea class="form-control" name="techneed" rows="4">{$info['techneed']}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">预　　<br>期　　<br>目　　<br>标　　</label>
+            <div class="col-md-10">
+                <textarea class="form-control" name="pretarget" rows="4">{$info['pretarget']}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">拟合作方式：</label>
+            <div class="col-md-10">
+                <input type="text" name="coomode" value="{$info['coomode']}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">现有产　<br>学研合　<br>作情况　</label>
+            <div class="col-md-10">
+                <textarea class="form-control" name="nowsitu" rows="4">{$info['nowsitu']}</textarea>
+            </div>
+        </div>
+    </form>
+    <br><br><br>
+</div>
+
+</body>
+</html>

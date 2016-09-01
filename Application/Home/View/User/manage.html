@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	table {
+		margin: 0px auto;
+	}
+	th {
+		border-bottom: 2px solid #424F63;
+	}
+	input {
+		border: 2px solid;
+	}
+	tr:hover {
+		background-color: #EEE;
+	}
+</style>
+</head>
+<body>
+	<div style="margin: 20px;">
+		<table style="text-align: center; border: 3px;">
+		<caption><h2>用户列表</h2></caption>
+		<th width="150px">用户名</th>
+		<th width="200px">昵称</th>
+		<th width="200px">学校</th>
+		<th width="200px">学院</th>
+		<th width="150px">注册身份</th>
+		<th width="150px">注册时间</th>
+		<th width="100px">停用</th>
+		<th width="100px">删除</th>
+		<foreach name="user_list" item="v">
+			<tr>
+				<td>{$v['user']}</td>
+				<td>{$v['nick']}</td>
+				<td>{$v['school']}</td>
+				<td>{$v['sector']}</td>
+				<td>{:power2job($v['power'])}</td>
+				<td>{:date('Y-m-d', $v['time'])}</td>
+				<td><a href="{:U('User/manage_stop')}?uid={$v['uid']}">停用</a></td>
+				<td><a href="{:U('User/manage_delete')}?uid={$v['uid']}">删除</a></td>
+			</tr>
+		</foreach>
+		</table>
+		<hr width="1220px" /><br />
+	</div>
+</body>
+</html>
